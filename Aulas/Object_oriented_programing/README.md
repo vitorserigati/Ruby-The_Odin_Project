@@ -1,4 +1,4 @@
-# Object Oriented Programing
+#Object Oriented Programing
 
 ```Ruby
 
@@ -27,7 +27,7 @@ javascript.description
 
     A basic class consists only of the class keyword and the name of the class.
     #def initialize #=> constructor of the class
-    class_name < moter_class  #=> inheritance
+    DerivedClass < BaseClass  #=> inheritance
 
 ex:
 
@@ -52,4 +52,12 @@ err.display_error
     $ => Global variable
     @@ => class variable
 
-##
+## Override
+  
+    To override a class method, just create the same method, but with different outputs
+
+## Super
+
+    The super keyword is used to call a method that has been overrided from the BaseClass
+    It's usefull when we override the BaseClass method, but still need to use it's output.
+    the super keyword must be used from inside of the method you're overridin
