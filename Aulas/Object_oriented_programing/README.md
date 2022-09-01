@@ -61,3 +61,13 @@ err.display_error
     The super keyword is used to call a method that has been overrided from the BaseClass
     It's usefull when we override the BaseClass method, but still need to use it's output.
     the super keyword must be used from inside of the method you're overridin
+
+## Getters and Setters
+
+    In ruby, we can add a attribute reader (Getter) and a attribute writer (setter) in order to change the values of a instance variable. 
+    ex..:
+    ```Ruby
+    attr_reader :variable_name #getter
+    attr_writer :variable_name #setter
+    attr_accessor :variable_name #getter and setter
+    ```
