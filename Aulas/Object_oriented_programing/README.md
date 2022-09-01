@@ -66,8 +66,10 @@ err.display_error
 
     In ruby, we can add a attribute reader (Getter) and a attribute writer (setter) in order to change the values of a instance variable. 
     ex..:
-    ```Ruby
+
+
+```Ruby
     attr_reader :variable_name #getter
     attr_writer :variable_name #setter
     attr_accessor :variable_name #getter and setter
-    ```
+```
