@@ -316,3 +316,49 @@ Thus, we can see that self is a way of being explicit about what our program is 
   ```
 
   If you forget to use the parentheses here, Ruby will raise an ArgumentError exception since the number of arguments is incorrect.
+
+# Mixing in Modules
+
+  ```Ruby
+  module Swimmable
+    def swim
+      "I'm swimming!"
+    end
+  end
+
+  class Animal; end
+
+  class Fish < Animal
+    include Swimmable         # mixing in Swimmable module
+  end
+
+  class Mammal < Animal
+  end
+
+  class Cat < Mammal
+  end
+
+  class Dog < Mammal
+    include Swimmable         # mixing in Swimmable module
+  end
+  
+  sparky = Dog.new
+  neemo  = Fish.new
+  paws   = Cat.new
+
+  sparky.swim                 # => I'm swimming!
+  neemo.swim                  # => I'm swimming!
+  paws.swim                   # => NoMethodError: undefined method `swim' for #<Cat:0x007fc453152308>
+  ```
+
+  Using modules to group common behaviors allows us to build a more powerful, flexible and DRY design.
+
+  Note: A common naming convention for Ruby is to use the "able" suffix on whatever verb describes the behavior that the module is modeling. You can see this convention with our Swimmable module. Likewise, we could name a module that describes "walking" as Walkable. Not all modules are named in this manner, however, it is quite common.
+
+# Inheritance vs Modules
+
+  Class inheritance is the traditional way to think about inheritance. One type inherits the behaviors of another type. The result is a new type that specializes the type of the superclass. Thye o ther form is sometimes called interface inheritance: this is where mixin modules come into play. the class doesn't inherit from another type, but instead, inherits the interface provided by the mixin module. In this case, the result type is not a specialized type with respect to the module.
+  When choosing between inheritance and mixin, there are a couple of things to consider.
+  - You can only subclass (class inheritance) from one class. You can mix in as many modules (interface inheritance) as you'd like.
+  - If there's an "is-a" relationship, class inheritance is usually the correct choice. If there's a "has-a" relationship, interface inheritance is generally a better choice. For example, a dog "is an" animal and it "has an" ability to swim.
+  - You cannot instantiate modules (i.e., no object can be created from a module). Modules are used only for namespacing and grouping common methods together.
