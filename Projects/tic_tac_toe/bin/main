@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/game'
+require_relative '../lib/player'
+require_relative '../lib/rules'
+
+Rules.display_guide
+puts "First, type the first player's name: "
+name = gets.chomp
+player1 = Player.new(name, 'x')
+puts "Now, the second player's name: "
+name = gets.chomp
+player2 = Player.new(name, 'o')
+game = Game.new(player1, player2)
+game.play
